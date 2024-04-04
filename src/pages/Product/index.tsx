@@ -5,19 +5,20 @@ import Section from '../../components/Section'
 
 import Gallery from '../../components/Gallery'
 
-import residentEvil from '../../assets/images/resident.png'
 import { Game } from '../Home'
+import { useGetGameQuery } from '../../services/api'
 
 const Product = () => {
   const { id } = useParams()
+  const { data: game } = useGetGameQuery(id!)
 
-  const [game, setGame] = useState<Game>()
+  // const [game, setGame] = useState<Game>()
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/eplay/jogos/${id}`)
-      .then((res) => res.json())
-      .then((res) => setGame(res))
-  }, [id])
+  // useEffect(() => {
+  //   fetch(`https://fake-api-tau.vercel.app/api/eplay/jogos/${id}`)
+  //     .then((res) => res.json())
+  //     .then((res) => setGame(res))
+  // }, [id])
 
   if (!game) {
     return <h3>Carregando...</h3>
